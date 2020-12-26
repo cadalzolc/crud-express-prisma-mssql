@@ -1,6 +1,6 @@
 # node-mssql
 
-This is a test project for **node.js connection to mssql**..
+**Node.js integration with Microsft SQL Server**..
 
 
 make dir appsvr

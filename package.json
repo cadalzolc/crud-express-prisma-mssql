@@ -1,0 +1,21 @@
+{
+  "name": "nodemssql",
+  "version": "1.0.0",
+  "description": "Node Js Connection to Microsoft SQL Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [
+    "mssql"
+  ],
+  "author": "Lambert Cadalzo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mssql": "^6.3.0",
+    "querystring": "^0.2.0"
+  },
+  "devDependencies": {}
+}

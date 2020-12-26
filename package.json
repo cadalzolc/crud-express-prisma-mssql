@@ -9,6 +9,10 @@
   "keywords": [
     "mssql"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cadalzolc/node-mssql.git"
+ },
   "author": "Lambert Cadalzo",
   "license": "ISC",
   "dependencies": {

@@ -26,6 +26,34 @@
   - package-lock.json
   - package.json
   
+## Define your database server configuration
+```javascript
+'user strict';
+
+const sql = require("mssql/msnodesqlv8");
+const config = {
+    server: "CADALZOLC\\SQLEXPRESS19",
+    port: "1433",
+    database: "DEMO",
+    driver: "msnodesqlv8",
+    options: {
+        trustedConnection: true
+    }
+};
+
+const poolPromise = new sql.ConnectionPool(config)  
+    .connect()  
+    .then(pool => {  
+        console.log('Connected to Microsft SQL Server')  
+        return pool  
+    })
+    .catch(err => console.log('Database Connection Failed! Bad Config: ', err));
+
+module.exports = {  
+    sql, poolPromise  
+}
+```
+
 ## Switching to SQL Authenthication & Windows
 ###### In your api folder. Change the import reference of your controller file.
 
@@ -70,7 +98,7 @@ router.post('/doctors/update/:id', Doctors.update_by_id);
 module.exports = router;
 ```
 
-## In your server.js which the entrypoint of your application
+## The script of server.js which is the main entrypoint of your application.
 ```javascript
 const express = require('express');
 const bodyParser = require('body-parser');

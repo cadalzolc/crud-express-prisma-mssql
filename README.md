@@ -1,9 +1,6 @@
-# node-mssql
+# Node.JS integration with Microsft SQL Server <h1>
 
-**Node.js integration with Microsft SQL Server**..
-
-# This is an <h1> tag
-## This is an <h2> tag
+## P
 ###### This is an <h6> tag
   
 make dir appsvr

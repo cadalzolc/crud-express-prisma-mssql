@@ -129,5 +129,5 @@ console.log('Server is running on port ' + port);
 ###### In VS Code, type [npm start] to start your server at http://localhost:5000. You can test the api using postam or other api tester.
 ###### You can also check it in your browser http://localhost:5000/doctors which will display a list of doctors record.
 
-###### For any issue and concern you can contact here on GitHub or reach me on my website https://cadalzolc.com.
+###### For any concern you can reach me here on GitHub or visit my website https://cadalzolc.com.
 ###### Thank you for partonizing my works.

@@ -29,6 +29,8 @@
 ## Switching to SQL Authenthication & Windows
 ###### In your api folder. Change the import reference of your controller file.
 
-//const { poolPromise } = require('../config/mssql_sqlauth')
-const { poolPromise } = require('../config/mssql_winauth') 
+```javascript
+//const { poolPromise } = require('../config/mssql_sqlauth');
+const { poolPromise } = require('../config/mssql_winauth');
+```javascript
 

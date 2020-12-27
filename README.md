@@ -32,5 +32,5 @@
 ```javascript
 //const { poolPromise } = require('../config/mssql_sqlauth');
 const { poolPromise } = require('../config/mssql_winauth');
-```javascript
+```
 

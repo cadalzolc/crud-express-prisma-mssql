@@ -1,6 +1,6 @@
 ## Node.JS Api with Microsft SQL Server
 
-###### This is a node.js project that simply describe how to use [express.js](https://expressjs.com/) and connect Microsoft SQL Database.
+###### This is a node.js project that simply describe how to use [express.js](https://expressjs.com/) and connect to Microsoft SQL Database.
 ###### Using two kind of sql node packages [node-mssql](https://www.npmjs.com/package/mssql) for sql authentication & [msnodesqlv8](https://www.npmjs.com/package/msnodesqlv8) for windows authentication.
   
 * list node packages used in project.
@@ -32,5 +32,42 @@
 ```javascript
 //const { poolPromise } = require('../config/mssql_sqlauth');
 const { poolPromise } = require('../config/mssql_winauth');
+
+//To List
+exports.list = async function(req, res) {
+    try {  
+        const pool = await poolPromise;  
+        const result = await pool.request()  
+            .query('select * from tbdef_doctors', function(err, result) {  
+                if (err)  {  
+                    console.log(err)  
+                }  
+                else {  
+                    res.json(result.recordset);  
+                }  
+            })  
+    } catch (err) {  
+        res.status(500)  
+        res.send(err.message)  
+    } 
+};
 ```
+
+## You can reference all api controller in your main routes
+
+```javascript
+var express = require('express');
+var router = express.Router();
+
+var Default = require('../api/default');
+var Doctors = require('../api/doctors');
+
+router.get('/', Default.index);
+router.get('/doctors', Doctors.list);
+router.post('/doctors/create', Doctors.create);
+router.post('/doctors/update/:id', Doctors.update_by_id);
+
+module.exports = router;
+```
+
 

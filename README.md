@@ -9,9 +9,9 @@
   * ###### mssql (npm install --save mssql)
   * ###### msnodesqlv8 (npm install --save msnodesqlv8)
 
-* ###### Folder Structure.
-  * ###### node_modules
-  * ###### sql
-  * ###### src
+ ###### * Folder Structure
+    #### * node_modules
+  * #### sql
+  * #### src
   * ###### package-lock.json
   * ###### package.json

@@ -9,11 +9,19 @@
   * mssql (npm install --save mssql)
   * msnodesqlv8 (npm install --save msnodesqlv8)
   
-<h1>
-  
-## Folder Structure
-  * node_modules
-  * sql
-  * src
-  * package-lock.json
-  * package.json
+## Folder Structure <h2>
+  - node_modules
+  - sql
+  - src
+    - api
+      - default.js
+      - doctor.js
+    - config
+      - mssql_sqlauth.js
+      - mssql_winauth.js
+    - lib
+      - server.js
+    - routes
+      - main.js
+  - package-lock.json
+  - package.json

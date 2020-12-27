@@ -38,7 +38,7 @@ exports.list = async function(req, res) {
     try {  
         const pool = await poolPromise;  
         const result = await pool.request()  
-            .query('select * from tbdef_doctors', function(err, result) {  
+            .query('select * from [table]', function(err, result) {  
                 if (err)  {  
                     console.log(err)  
                 }  

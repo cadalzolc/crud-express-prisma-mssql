@@ -82,3 +82,39 @@ exports.update_by_id = async function(req, res) {
         }); 
     } 
 };
+
+//Update doctor record by id using Stored Procedure
+exports.update_by_id_proc = async function(req, res) {
+    try {  
+
+        let msg = req.body.message;
+        let str = req.body.str;
+        let id = req.params.id;
+
+        const pool = await poolPromise;  
+        const result = await pool.request()
+            .input('ID', sql.VarChar(50), id)
+            .input('Message', sql.VarChar(300), msg)
+            .input('Str', sql.VarChar(150), Str) 
+            //.output('output_parameter', sql.VarChar(MAX))
+            .execute("SP_Doctors_Update").then(function(err, result, output) {  
+                if (err)  {  
+                    console.log(err)  
+                }  
+                else {  
+                    res.json({ 
+                        key: req.params.id,
+                        success: true,
+                        message: 'Record was successfuly updated using SP!',
+                    });  
+                }  
+            })  
+    } catch (err) {  
+        res.status(500)  
+        res.json({ 
+            key: req.params.id,
+            success: false,
+            message: err.message,
+        }); 
+    } 
+};

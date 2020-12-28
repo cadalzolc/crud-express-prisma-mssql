@@ -8,5 +8,6 @@ router.get('/', Default.index);
 router.get('/doctors', Doctors.list);
 router.post('/doctors/create', Doctors.create);
 router.post('/doctors/update/:id', Doctors.update_by_id);
+router.post('/doctors/spupdate/:id', Doctors.update_by_id);
 
 module.exports = router;

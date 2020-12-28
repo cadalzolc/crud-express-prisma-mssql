@@ -1,4 +1,3 @@
-/****** Object:  Table [dbo].[tbdef_doctors]    Script Date: 2020-12-26 09:14:27 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,4 +29,20 @@ CREATE TABLE [dbo].[tbdef_doctors](
 	[doctor] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+CREATE PROCEDURE SP_Doctors_Update
+@ID varchar(50),
+@Message varchar(300),
+@Str varchar(150)
+AS
+BEGIN
+
+	UPDATE	tbdef_doctors
+	SET		message = @Message,
+			str = @Str
+	WHERE	doctor = @ID
+
+END
 GO

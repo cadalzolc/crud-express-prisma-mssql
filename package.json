@@ -12,7 +12,10 @@
     "type": "git",
     "url": "https://github.com/cadalzolc/node-mssql.git"
   },
-  "author": "Lambert Cadalzo",
+  "author": {
+   "name": "Lambert Cadalzo",
+   "website": "https://cadalzo.com"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",

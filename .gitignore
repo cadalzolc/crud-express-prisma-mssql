@@ -1,0 +1,15 @@
+# Local files
+node_modules
+*.lock
+yarn.lock
+package-lock.json
+
+# Build files
+dist
+
+# Env files
+.env*.local
+.env
+.env.development
+.env.production
+.env.staging

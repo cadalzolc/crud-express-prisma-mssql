@@ -27,12 +27,13 @@ This project is a CRUD API built using JavaScript, Express, SQL Server, and Pris
 ```
 
 ## API Endpoints
+```yaml
 - GET /user - Retrieve all users
 - GET /user/:id - Get user by id
 - POST /user/create - Create a new user
 - POST /user/update/:id - Update user by id
 - POST /user/delete/:id - Delete user by id
-
+```
 
 ## Prerequisites
 - Node.js

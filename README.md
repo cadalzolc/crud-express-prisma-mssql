@@ -3,6 +3,7 @@
 This project is a CRUD API built using JavaScript, Express, SQL Server, and Prisma ORM. It provides endpoints to create, read, update, and delete data from a SQL Server database.
 
 ## Folder Structure
+```yaml
   - node_modules
   - prisma
     - schema.prisma
@@ -23,6 +24,7 @@ This project is a CRUD API built using JavaScript, Express, SQL Server, and Pris
   - package-lock.json
   - package.json
   - README.md
+```
 
 ## API Endpoints
 - GET /user - Retrieve all users

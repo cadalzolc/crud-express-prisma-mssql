@@ -1,11 +1,11 @@
 # Local files
-node_modules
+/node_modules
 *.lock
 yarn.lock
 package-lock.json
 
 # Build files
-dist
+/dist
 
 # Env files
 .env*.local

@@ -1,133 +1,68 @@
-## Node.JS Api with Microsft SQL Server
+# JavaScript CRUD API with Express, SQL Server, and Prisma ORM
 
-###### This is a node.js project that simply describe how to use [express.js](https://expressjs.com/) and connect to Microsoft SQL Database.
-###### Using two kind of sql node packages [node-mssql](https://www.npmjs.com/package/mssql) for sql authentication & [msnodesqlv8](https://www.npmjs.com/package/msnodesqlv8) for windows authentication.
-  
-* list node packages used in project.
-  * express (npm install --save express)
-  * body-parser (npm install --save body-parser)
-  * mssql (npm install --save mssql)
-  * msnodesqlv8 (npm install --save msnodesqlv8)
-  
+This project is a CRUD API built using JavaScript, Express, SQL Server, and Prisma ORM. It provides endpoints to create, read, update, and delete data from a SQL Server database.
+
 ## Folder Structure
   - node_modules
-  - sql _(Sample table schema)_
+  - prisma
+    - schema.prisma
+    - seed.js
   - src
     - api
       - default.js
-      - doctor.js
-    - config
-      - mssql_sqlauth.js
-      - mssql_winauth.js
+      - userController.js
     - lib
-      - server.js
+      - config
+        - db.js
     - routes
       - main.js
+    - server.js
+  - .env
+  - .gitignore
+  - env.sample
   - package-lock.json
   - package.json
-  
-## Define your database server configuration
-```javascript
-'user strict';
+  - README.md
 
-const sql = require("mssql/msnodesqlv8");
-const config = {
-    server: "CADALZOLC\\SQLEXPRESS19",
-    port: "1433",
-    database: "DEMO",
-    driver: "msnodesqlv8",
-    options: {
-        trustedConnection: true
-    }
-};
+## API Endpoints
+- GET /user - Retrieve all users
+- GET /user/:id - Get user by id
+- POST /user/create - Create a new user
+- POST /user/update/:id - Update user by id
+- POST /user/delete/:id - Delete user by id
 
-const poolPromise = new sql.ConnectionPool(config)  
-    .connect()  
-    .then(pool => {  
-        console.log('Connected to Microsft SQL Server')  
-        return pool  
-    })
-    .catch(err => console.log('Database Connection Failed! Bad Config: ', err));
 
-module.exports = {  
-    sql, poolPromise  
-}
+## Prerequisites
+- Node.js
+- npm
+- SQL Server
+
+### Create Environment File
+```
+.env //Please see env.sample and fill it up for your local values
 ```
 
-## Switching to SQL Authenthication & Windows
-###### In your api folder. Change the import reference of your controller file.
+### Install Dependencies
+```js
+npm install
+```  
 
-```javascript
-//const { poolPromise } = require('../config/mssql_sqlauth');
-const { poolPromise } = require('../config/mssql_winauth');
+### Setup Prisma
+```js
+npx prisma init
+``` 
 
-//To List
-exports.list = async function(req, res) {
-    try {  
-        const pool = await poolPromise;  
-        const result = await pool.request()  
-            .query('select * from [table]', function(err, result) {  
-                if (err)  {  
-                    console.log(err)  
-                }  
-                else {  
-                    res.json(result.recordset);  
-                }  
-            })  
-    } catch (err) {  
-        res.status(500)  
-        res.send(err.message)  
-    } 
-};
+### Generate Database
+```js
+npm run prisma:migrate
+``` 
+
+### Seed Database
+```js
+npm run prisma:seed
+``` 
+
+### Running the Server
 ```
-
-## You can reference all api controller in your main routes
-
-```javascript
-var express = require('express');
-var router = express.Router();
-
-var Default = require('../api/default');
-var Doctors = require('../api/doctors');
-
-router.get('/', Default.index);
-router.get('/doctors', Doctors.list);
-router.post('/doctors/create', Doctors.create);
-router.post('/doctors/update/:id', Doctors.update_by_id);
-
-module.exports = router;
-```
-
-## The script of server.js which is the main entrypoint of your application.
-```javascript
-const express = require('express');
-const bodyParser = require('body-parser');
-
-let app = express();
-
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-    next();
-});
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(bodyParser.raw());
-
-var port = process.env.PORT || 5000;
-var ApiRouter = require('../routes/main');
-
-app.use('', ApiRouter);
-app.listen(port);
-
-console.log('Server is running on port ' + port);
-```
-
-## Run your application
-
-###### In VS Code, type [npm start] to start your server at http://localhost:5000. You can test the api using postam or other api tester.
-###### You can also check it in your browser http://localhost:5000/doctors which will display a list of doctors record.
-
-###### For any concern you can reach me here on GitHub.
-###### Thank you for partonizing my works.
+npm run start
+```  

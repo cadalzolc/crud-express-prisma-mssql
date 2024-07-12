@@ -1,5 +1,5 @@
 {
-  "name": "nodemssql",
+  "name": "crud-express-prisma-mssql",
   "version": "1.0.0",
   "description": "Node Js Connection to Microsoft SQL Server",
   "scripts": {
@@ -10,15 +10,15 @@
     "prisma:seed": "node prisma/seed.js"
   },
   "keywords": [
-    "mssql"
+    "mssql", "prisma", "express", "javascript"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/cadalzolc/node-mssql.git"
+    "url": "https://github.com/cadalzolc/crud-express-prisma-mssql.git"
   },
   "author": {
     "name": "Lambert Cadalzo",
-    "website": "https://cadalzo.com"
+    "website": "https://cadalzolc.com"
   },
   "license": "ISC",
   "dependencies": {
